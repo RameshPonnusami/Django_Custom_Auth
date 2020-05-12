@@ -1,0 +1,32 @@
+In settings.py:
+Step 1: Add following lines in INSTALLED_APPS
+INSTALLED_APPS = [
+     #....
+    'rest_framework.authtoken',
+    'accounts',
+    'api',
+    ]
+
+Step 2: Add following lines in Settings.py
+REST_FRAMEWORK = {
+    # Authentication Scheme
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    # Permission Policies
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
+}
+
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+)
+
+Step 3: Add Authentication Model:
+AUTH_USER_MODEL = 'accounts.User'
+
+
+
